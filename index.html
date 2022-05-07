@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | TTCJump2</title>
+    <title>Unity WebGL Player | TTCJump</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">TTCJump2</div>
+        <div id="unity-build-title">TTCJump</div>
       </div>
     </div>
     <script>
@@ -56,14 +56,14 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/TTCJump2.loader.js";
+      var loaderUrl = buildUrl + "/TTCJump.loader.js";
       var config = {
-        dataUrl: buildUrl + "/TTCJump2.data.unityweb",
-        frameworkUrl: buildUrl + "/TTCJump2.framework.js.unityweb",
-        codeUrl: buildUrl + "/TTCJump2.wasm.unityweb",
+        dataUrl: buildUrl + "/TTCJump.data.unityweb",
+        frameworkUrl: buildUrl + "/TTCJump.framework.js.unityweb",
+        codeUrl: buildUrl + "/TTCJump.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "TTCJump2",
+        companyName: "ttc",
+        productName: "TTCJump",
         productVersion: "0.1",
         showBanner: unityShowBanner,
       };
@@ -80,7 +80,6 @@
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
