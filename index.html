@@ -55,23 +55,22 @@
         updateBannerVisibility();
       }
 
-
-     function newMessage(event) {
-          if(event.data && event.data.info){
-              if(event.data.info.address){
-               window.unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
-              }
-              if(event.data.info.headImg){
-                window.unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headImg);
-              }
-          }
+      function newMessage(event) {
+            if(event.data && event.data.info){
+                if(event.data.info.address){
+                  unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
+                }
+                if(event.data.info.headImg){
+                  unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headImg);
+                }
+            }
       }
 
       window.addEventListener("message", newMessage, false);
 
 
       function GetUserInfo(){
-          window.unityInstance.SendMessage('Canvas', 'SetAddressText', "0x134235342344324");
+          unityInstance.SendMessage('Canvas', 'SetAddressText', "0x134235342344324");
           window.parent.postMessage('UserInfo', '*');
       }
 
@@ -110,7 +109,7 @@
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
-        window.unityInstance = createUnityInstance(canvas, config, (progress) => {
+        createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
