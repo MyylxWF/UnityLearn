@@ -71,7 +71,7 @@
 
       function GetUserInfo(){
           window.unityInstance.SendMessage('Canvas', 'SetAddressText', "0x134235342344324");
-          window.parent.postMessage('UserInfo', '*');
+          window.parent.postMessage('userInfo', '*');
       }
 
       var buildUrl = "Build";
@@ -112,11 +112,11 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
+          window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
-          window.unityInstance = unityInstance;
         }).catch((message) => {
           alert(message);
         });
