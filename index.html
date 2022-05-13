@@ -55,7 +55,7 @@
         updateBannerVisibility();
       }
 
-      function newMessage(event) {
+       function newMessage(event) {
             if(event.data && event.data.info){
                 if(event.data.info.address){
                   unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
@@ -99,6 +99,7 @@
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
+        unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
