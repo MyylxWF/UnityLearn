@@ -55,15 +55,16 @@
         updateBannerVisibility();
       }
 
-       function newMessage(event) {
-            if(event.data && event.data.info){
-                if(event.data.info.address){
-                 window.unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
-                }
-                if(event.data.info.headImg){
-                  window.unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headImg);
-                }
-            }
+
+     function newMessage(event) {
+          if(event.data && event.data.info){
+              if(event.data.info.address){
+               window.unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
+              }
+              if(event.data.info.headImg){
+                window.unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headImg);
+              }
+          }
       }
 
       window.addEventListener("message", newMessage, false);
@@ -116,6 +117,7 @@
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
+          window.unityInstance = unityInstance;
         }).catch((message) => {
           alert(message);
         });
