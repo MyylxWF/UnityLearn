@@ -55,17 +55,23 @@
         updateBannerVisibility();
       }
 
-      function getQueryVariable(variable) {
-        console.log(variable);
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for(var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
-            if(pair[0] == variable) {
-                return pair[1];
+      function newMessage(event) {
+            if(event.data && event.data.info){
+                if(event.data.info.address){
+                  unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
+                }
+                if(event.data.info.headImg){
+                  unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headImg);
+                }
             }
-        }
-        return('');
+      }
+
+      window.addEventListener("message", newMessage, false);
+
+
+      function GetUserInfo(){
+          unityInstance.SendMessage('Canvas', 'SetAddressText', "0x134235342344324");
+          window.parent.postMessage('UserInfo', '*');
       }
 
       var buildUrl = "Build";
