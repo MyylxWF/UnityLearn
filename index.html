@@ -58,10 +58,10 @@
        function newMessage(event) {
             if(event.data && event.data.info){
                 if(event.data.info.address){
-                  unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
+                 window.unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
                 }
                 if(event.data.info.headImg){
-                  unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headImg);
+                  window.unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headImg);
                 }
             }
       }
@@ -70,7 +70,7 @@
 
 
       function GetUserInfo(){
-          unityInstance.SendMessage('Canvas', 'SetAddressText', "0x134235342344324");
+          window.unityInstance.SendMessage('Canvas', 'SetAddressText', "0x134235342344324");
           window.parent.postMessage('UserInfo', '*');
       }
 
