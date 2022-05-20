@@ -60,8 +60,8 @@
                 if(event.data.info.address){
                  window.unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
                 }
-                if(event.data.info.headImg){
-                  window.unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headImg);
+                if(event.data.info.headUrl){
+                  window.unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headUrl);
                 }
             }
       }
@@ -70,7 +70,6 @@
 
 
       function GetUserInfo(){
-          window.unityInstance.SendMessage('Canvas', 'SetAddressText', "0x134235342344324");
           window.parent.postMessage('userInfo', '*');
       }
 
@@ -99,7 +98,6 @@
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
