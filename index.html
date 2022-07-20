@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Block Tank Battle</title>
+    <title>Unity WebGL Player | FlapUp</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
+      <canvas id="unity-canvas" width=640 height=1136></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Block Tank Battle</div>
+        <div id="unity-build-title">FlapUp</div>
       </div>
     </div>
     <script>
@@ -56,14 +56,14 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Tanks.loader.js";
+      var loaderUrl = buildUrl + "/FlapUp.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Tanks.data.unityweb",
-        frameworkUrl: buildUrl + "/Tanks.framework.js.unityweb",
-        codeUrl: buildUrl + "/Tanks.wasm.unityweb",
+        dataUrl: buildUrl + "/FlapUp.data.unityweb",
+        frameworkUrl: buildUrl + "/FlapUp.framework.js.unityweb",
+        codeUrl: buildUrl + "/FlapUp.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "StomStudio",
-        productName: "Block Tank Battle",
+        companyName: "DefaultCompany",
+        productName: "FlapUp",
         productVersion: "1.0",
         showBanner: unityShowBanner,
       };
@@ -88,15 +88,15 @@
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
 
-        canvas.style.width = window.innerHeight + 'px';
-        canvas.style.height = window.innerWidth + 'px';
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
 
-        
+        unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.width = "640px";
+        canvas.style.height = "1136px";
       }
 
       loadingBar.style.display = "block";
