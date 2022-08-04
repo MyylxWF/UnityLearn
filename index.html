@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">UnityAircraftFight</div>
+        <div id="unity-build-title">TTCAircraftFight</div>
       </div>
     </div>
     <script>
@@ -55,6 +55,24 @@
         updateBannerVisibility();
       }
 
+      unction newMessage(event) {
+            if(event.data && event.data.info){
+                if(event.data.info.address){
+                 window.unityInstance.SendMessage('Canvas', 'SetAddressText', event.data.info.address);
+                }
+                if(event.data.info.headUrl){
+                  window.unityInstance.SendMessage('Canvas', 'LoadHeadImage', event.data.info.headUrl);
+                }
+            }
+      }
+
+      window.addEventListener("message", newMessage, false);
+
+
+      function GetUserInfo(){
+          window.parent.postMessage('userInfo', '*');
+      }
+
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/AirFight.loader.js";
       var config = {
@@ -62,8 +80,8 @@
         frameworkUrl: buildUrl + "/AirFight.framework.js.unityweb",
         codeUrl: buildUrl + "/AirFight.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "UnityAircraftFight",
+        companyName: "ttc",
+        productName: "TTCAircraftFight",
         productVersion: "0.1",
         showBanner: unityShowBanner,
       };
@@ -91,6 +109,7 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
 
+        
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
@@ -106,6 +125,7 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
+          window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
