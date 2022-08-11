@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | UnityAircraftFight</title>
+    <title>Unity WebGL Player | TTC Aircraft Fight</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">TTCAircraftFight</div>
+        <div id="unity-build-title">TTC Aircraft Fight</div>
       </div>
     </div>
     <script>
@@ -55,6 +55,19 @@
         updateBannerVisibility();
       }
 
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/AirFight.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/AirFight.data.unityweb",
+        frameworkUrl: buildUrl + "/AirFight.framework.js.unityweb",
+        codeUrl: buildUrl + "/AirFight.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "ttc",
+        productName: "TTC Aircraft Fight",
+        productVersion: "0.1",
+        showBanner: unityShowBanner,
+      };
+
       function newMessage(event) {
             if(event.data && event.data.info){
                 if(event.data.info.address){
@@ -72,19 +85,6 @@
       function GetUserInfo(){
           window.parent.postMessage('userInfo', '*');
       }
-
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/AirFight.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/AirFight.data.unityweb",
-        frameworkUrl: buildUrl + "/AirFight.framework.js.unityweb",
-        codeUrl: buildUrl + "/AirFight.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "ttc",
-        productName: "TTCAircraftFight",
-        productVersion: "0.1",
-        showBanner: unityShowBanner,
-      };
 
       // By default Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
@@ -109,7 +109,6 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
 
-        
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
